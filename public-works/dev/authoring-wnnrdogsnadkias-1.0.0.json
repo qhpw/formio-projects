@@ -1,0 +1,519 @@
+{
+  "title": "Authoring",
+  "version": "2.0.0",
+  "name": "authoring-wnnrdogsnadkias",
+  "roles": {},
+  "forms": {
+    "strataResilienceProgram": {
+      "title": "Strata Resilience Program",
+      "type": "form",
+      "name": "strataResilienceProgram",
+      "path": "strataresilienceprogram",
+      "display": "form",
+      "tags": [],
+      "settings": {
+        "logs": "true",
+        "share": {
+          "theme": "",
+          "showHeader": true
+        }
+      },
+      "components": [
+        {
+          "label": "Body corporate name",
+          "description": "Enter full legal name",
+          "applyMaskOn": "change",
+          "tableView": true,
+          "validate": {
+            "required": true
+          },
+          "key": "bodyCorporateName",
+          "type": "textfield",
+          "input": true
+        },
+        {
+          "label": "Address",
+          "tableView": false,
+          "providerOptions": {
+            "params": {
+              "apiKey": "housing"
+            }
+          },
+          "key": "address",
+          "type": "plsplusaddress",
+          "switchToManualModeLabel": "Enter address manually",
+          "input": true,
+          "components": [
+            {
+              "key": "addressData",
+              "type": "container",
+              "label": "Address data",
+              "tableView": true,
+              "tags": [
+                "container"
+              ],
+              "components": [
+                {
+                  "label": "Autocomplete address",
+                  "key": "autocompleteAddress",
+                  "tags": [
+                    "autocompleteAddress"
+                  ],
+                  "type": "hidden",
+                  "input": true,
+                  "tableView": false
+                },
+                {
+                  "label": "Selected address",
+                  "key": "selectedAddress",
+                  "tags": [
+                    "selectedAddress"
+                  ],
+                  "type": "hidden",
+                  "input": true,
+                  "tableView": false
+                },
+                {
+                  "label": "Mode",
+                  "key": "mode",
+                  "tags": [
+                    "mode"
+                  ],
+                  "type": "hidden",
+                  "input": true,
+                  "tableView": false
+                },
+                {
+                  "label": "Address line 1 <i>(include unit number if needed)</i>",
+                  "key": "address1",
+                  "tags": [
+                    "address1"
+                  ],
+                  "type": "textfield",
+                  "input": true,
+                  "validate": {
+                    "required": true,
+                    "pattern": "^((?![<>\\{\\}]).)*$",
+                    "customMessage": "You have exceeded the character limit or included html or special characters, e.g. <,>,{,},\\",
+                    "maxLength": 40
+                  },
+                  "tableView": true
+                },
+                {
+                  "label": "Address line 2",
+                  "key": "address2",
+                  "tags": [
+                    "address2"
+                  ],
+                  "type": "textfield",
+                  "input": true,
+                  "validate": {
+                    "pattern": "^((?![<>\\{\\}]).)*$",
+                    "customMessage": "You have exceeded the character limit or included html or special characters, e.g. <,>,{,},\\",
+                    "maxLength": 40
+                  },
+                  "tableView": true
+                },
+                {
+                  "label": "Address line 3",
+                  "key": "address3",
+                  "tags": [
+                    "address3"
+                  ],
+                  "type": "textfield",
+                  "input": true,
+                  "validate": {
+                    "pattern": "^((?![<>\\{\\}]).)*$",
+                    "customMessage": "You have exceeded the character limit or included html or special characters, e.g. <,>,{,},\\",
+                    "maxLength": 40
+                  },
+                  "tableView": true
+                },
+                {
+                  "label": "Town, City or Suburb",
+                  "key": "city",
+                  "tags": [
+                    "city"
+                  ],
+                  "type": "textfield",
+                  "input": true,
+                  "validate": {
+                    "required": true,
+                    "pattern": "^((?![<>\\{\\}]).)*$",
+                    "customMessage": "You have exceeded the character limit or included html or special characters, e.g. <,>,{,},\\",
+                    "maxLength": 40
+                  },
+                  "tableView": true
+                },
+                {
+                  "label": "State",
+                  "key": "state",
+                  "tags": [
+                    "state"
+                  ],
+                  "type": "textfield",
+                  "input": true,
+                  "disabled": true,
+                  "defaultValue": "QLD",
+                  "tableView": true
+                },
+                {
+                  "label": "Postcode",
+                  "key": "postcode",
+                  "tags": [
+                    "postcode"
+                  ],
+                  "type": "textfield",
+                  "input": true,
+                  "inputMask": "9999",
+                  "validate": {
+                    "required": true,
+                    "pattern": "^([0-9]{4})$",
+                    "customMessage": "Invalid postcode format",
+                    "minLength": 4,
+                    "maxLength": 4
+                  },
+                  "tableView": true
+                }
+              ],
+              "input": true
+            }
+          ]
+        },
+        {
+          "label": "Has this property participated in the North Queensland Strata Title Inspection Program?",
+          "optionsLabelPosition": "right",
+          "inline": false,
+          "tableView": false,
+          "values": [
+            {
+              "label": "Yes",
+              "value": "Yes",
+              "shortcut": ""
+            },
+            {
+              "label": "No, but I would like to register for future inspection programs",
+              "value": "No",
+              "shortcut": ""
+            }
+          ],
+          "validate": {
+            "required": true,
+            "onlyAvailableItems": true
+          },
+          "errorLabel": "This field",
+          "key": "theNorthQueenslandStrataTitleInspectionProgram",
+          "type": "radio",
+          "input": true
+        },
+        {
+          "label": "Number of residential tenancies within the property (numeric only)",
+          "applyMaskOn": "change",
+          "customClass": "small-field",
+          "mask": false,
+          "tableView": false,
+          "delimiter": false,
+          "requireDecimal": false,
+          "inputFormat": "plain",
+          "truncateMultipleSpaces": false,
+          "validate": {
+            "required": true
+          },
+          "errorLabel": "This field",
+          "key": "numberOfResidentialTenancies",
+          "attributes": {
+            "class": "small-field"
+          },
+          "type": "number",
+          "input": true
+        },
+        {
+          "label": "Name of Body Corporate representative",
+          "applyMaskOn": "change",
+          "tableView": true,
+          "validate": {
+            "required": true
+          },
+          "key": "nameOfBodyCorporateRepresentative",
+          "type": "textfield",
+          "input": true
+        },
+        {
+          "label": "Your relation to the body corporate",
+          "optionsLabelPosition": "right",
+          "inline": false,
+          "tableView": false,
+          "values": [
+            {
+              "label": "Member of body corporate committee",
+              "value": "Member of body corporate committee",
+              "shortcut": ""
+            },
+            {
+              "label": "Property owner",
+              "value": "Property owner",
+              "shortcut": ""
+            },
+            {
+              "label": "Strata Manager",
+              "value": "Strata Manager",
+              "shortcut": ""
+            },
+            {
+              "label": "Tenant",
+              "value": "Tenant",
+              "shortcut": ""
+            },
+            {
+              "label": "Contractor",
+              "value": "Contractor",
+              "shortcut": ""
+            },
+            {
+              "label": "Other",
+              "value": "Other",
+              "shortcut": ""
+            }
+          ],
+          "errorLabel": "This field",
+          "key": "yourRelationToTheBodyCorporate",
+          "type": "radio",
+          "input": true
+        },
+        {
+          "label": "Please specify",
+          "applyMaskOn": "change",
+          "tableView": true,
+          "validate": {
+            "required": true,
+            "customMessage": "Specify your relation to the body corporate"
+          },
+          "key": "otherRelationToTheBodyCorporate",
+          "conditional": {
+            "show": true,
+            "conjunction": "all",
+            "conditions": [
+              {
+                "component": "yourRelationToTheBodyCorporate",
+                "operator": "isEqual",
+                "value": "Other"
+              }
+            ]
+          },
+          "type": "textfield",
+          "input": true
+        },
+        {
+          "label": "Do you have authority to register on behalf of the body corporate?",
+          "optionsLabelPosition": "right",
+          "inline": false,
+          "tableView": false,
+          "values": [
+            {
+              "label": "Yes",
+              "value": "Yes",
+              "shortcut": ""
+            },
+            {
+              "label": "Not yet",
+              "value": "No",
+              "shortcut": ""
+            }
+          ],
+          "validate": {
+            "required": true
+          },
+          "key": "doYouHaveAuthorityToRegisterOnBehalfOfTheBodyCorporate",
+          "type": "radio",
+          "input": true
+        },
+        {
+          "label": "Contact number during business hours",
+          "inputMask": "99 9999 9999",
+          "applyMaskOn": "change",
+          "customClass": "small-field",
+          "tableView": true,
+          "validate": {
+            "required": true,
+            "customMessage": "Enter a valid phone number"
+          },
+          "errorLabel": "Contact number",
+          "key": "contactNumber",
+          "type": "phoneNumber",
+          "input": true
+        },
+        {
+          "label": "Email",
+          "applyMaskOn": "change",
+          "tableView": true,
+          "validate": {
+            "required": true
+          },
+          "key": "email",
+          "type": "email",
+          "input": true
+        },
+        {
+          "label": "HTML",
+          "attrs": [
+            {
+              "attr": "",
+              "value": ""
+            }
+          ],
+          "content": "<h3>Privacy notice</h3>\n<p>The Department of Housing, Local Government, Planning and Public Works (department) is collecting your personal information on this form to provide you with program updates in connection with the Strata Resilience Program. Your personal information will be used for the purpose of providing you updates regarding the new program.</p>\n<p>The statistical data derived from this information may be disclosed to other State and Federal Government agencies for program research and outcome comparison purposes.\n</p>\n<p>Unless authorised or required by law, your personal information will not otherwise be disclosed to any other third party without your consent.  More information about <a href=\"https://www.housing.qld.gov.au/global/privacy\">the department's privacy policy is available on our website</a>.</p>",
+          "refreshOnChange": false,
+          "key": "html",
+          "type": "htmlelement",
+          "input": false,
+          "tableView": false
+        },
+        {
+          "label": "I acknowledge and understand that my personal information is being collected, used and disclosed as described in this privacy notice.",
+          "tableView": false,
+          "defaultValue": false,
+          "validate": {
+            "required": true
+          },
+          "errorLabel": "This field",
+          "key": "iAcknowledgehePrivacyNotice",
+          "type": "checkbox",
+          "input": true
+        },
+        {
+          "label": "Row ID",
+          "applyMaskOn": "change",
+          "hidden": true,
+          "hideLabel": true,
+          "mask": true,
+          "tableView": true,
+          "clearOnHide": false,
+          "calculateValue": "var today = new Date();\nvalue = today.toJSON().replace(\":\",\"-\");",
+          "key": "rowId",
+          "type": "textfield",
+          "input": true
+        },
+        {
+          "type": "button",
+          "label": "Submit",
+          "key": "submit",
+          "disableOnInvalid": true,
+          "input": true,
+          "tableView": false
+        }
+      ],
+      "properties": {},
+      "controller": "",
+      "submissionRevisions": "true"
+    }
+  },
+  "actions": {
+    "strataResilienceProgram:save": {
+      "title": "Save Submission",
+      "name": "save",
+      "form": "strataResilienceProgram",
+      "priority": 10,
+      "method": [
+        "create",
+        "update"
+      ],
+      "handler": [
+        "before"
+      ]
+    },
+    "strataResilienceProgram:webhook": {
+      "title": "QDAP",
+      "name": "webhook",
+      "form": "strataResilienceProgram",
+      "condition": {
+        "eq": "",
+        "value": "",
+        "custom": ""
+      },
+      "settings": {
+        "method": "put",
+        "url": "https://communicationformio.blob.core.windows.net/data-dev/strata-resilience-{{ data.rowId }}?si=DevAccess&spr=https&sv=2022-11-02&sr=c&sig=3sXq%2Fy%2BjfbbH1VXrX0X8bbdaXxxjfax4hIIFshQe6Pw%3D",
+        "forwardHeaders": false,
+        "username": "",
+        "password": "",
+        "headers": [
+          {
+            "header": "x-ms-version",
+            "value": "2020-12-06"
+          },
+          {
+            "header": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "header": "x-ms-blob-type",
+            "value": "BlockBlob"
+          },
+          {
+            "header": "x-ms-meta-m1",
+            "value": "v1"
+          },
+          {
+            "header": "x-ms-meta-m2",
+            "value": "v2"
+          }
+        ],
+        "transform": "",
+        "block": false,
+        "externalIdType": "",
+        "externalIdPath": ""
+      },
+      "priority": 0,
+      "method": [
+        "create",
+        "update",
+        "delete"
+      ],
+      "handler": [
+        "after"
+      ]
+    },
+    "strataResilienceProgram:email": {
+      "title": "Email",
+      "name": "email",
+      "form": "strataResilienceProgram",
+      "condition": {
+        "field": {},
+        "eq": "",
+        "value": "",
+        "custom": ""
+      },
+      "settings": {
+        "transport": "smtp",
+        "from": "noreply@housing.qld.gov.au",
+        "replyTo": "",
+        "emails": [
+          "hari.suminto@housing.qld.gov.au"
+        ],
+        "sendEach": false,
+        "cc": [
+          ""
+        ],
+        "bcc": [
+          ""
+        ],
+        "subject": "New submission for {{ form.title }}.",
+        "template": "",
+        "message": "A submission is received from Strata Resilience Program - future interest register form.\n\nYou can manage submissions at https://hpwqld.sharepoint.com/sites/chde-comms/web-content/form-submission/Lists/strataresilienceprogram/submissions.aspx",
+        "renderingMethod": "dynamic",
+        "attachFiles": false,
+        "attachPDF": false
+      },
+      "priority": 0,
+      "method": [
+        "create"
+      ],
+      "handler": [
+        "after"
+      ]
+    }
+  },
+  "resources": {},
+  "revisions": {},
+  "excludeAccess": true
+}
